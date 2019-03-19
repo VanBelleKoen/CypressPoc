@@ -35,6 +35,6 @@ describe('basic Navigation on the site', function() {
 			)
 			.click({ force: true });
 
-		cy.get('.section - title').should('be.visible');
+		cy.get('.section-title').should('be.visible');
 	});
 });
