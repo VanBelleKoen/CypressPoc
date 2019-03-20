@@ -26,12 +26,13 @@ describe('The weather page', function() {
 		let selectCity = ':nth-child(' + selectRanTable + ') >.table>tbody>:nth-child(' + selectRanRow + ') >.key>a';
 		//selecting a random city in the tabled list
 
-		cy.get(selectCity).should('be.visible').then(($city) => {
-			cy.get(selectCity).click();
+		cy.get(selectCity).last().should('be.visible').then(($city) => {
+			cy.get(selectCity).last().click();
 
 			cy.get('.weather-title').should('be.visible').then(($weatherCity) => {
 				expect($weatherCity.text()).to.contain($city.text());
 			});
+			cy.get('.weather-today__measuredTemp').should('be.visible');
 		});
 	});
 });
