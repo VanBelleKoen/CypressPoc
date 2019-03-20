@@ -26,7 +26,7 @@ describe('basic Navigation on the site', function() {
 		});
 	});
 
-	it('Navigate to a subsection', function() {
+	it('Navigate to the subsection binnenland', function() {
 		cy
 			.get('.ubersection-nieuws >> .nav__caret')
 			.invoke('show')
