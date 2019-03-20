@@ -47,4 +47,11 @@ describe('basic Navigation on the site', function() {
 			.should('have.attr', 'href')
 			.and('include', 'service');
 	});
+
+	it('Validate the Abonnementen link', function() {
+		cy
+			.get('.tertiary-nav >> :nth-child(4)> .nav__list__item__link')
+			.should('have.attr', 'href')
+			.and('include', 'abonnement');
+	});
 });
