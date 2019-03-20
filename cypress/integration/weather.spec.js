@@ -1,9 +1,8 @@
 /// <reference types="Cypress" />
 
 beforeEach(() => {
-	cy.visit('/');
+	cy.visit('/het-weer/');
 	cy.get('button.fjs-set-consent').first().click();
-	cy.get('.nav__list__item--sub').first().click();
 });
 
 describe('The weather page', function() {
