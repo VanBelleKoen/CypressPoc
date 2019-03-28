@@ -17,11 +17,22 @@ describe('The weather page', function() {
 			.should('be.visible')
 			.type(Math.floor(Math.random() * 9999 + 1000));
 		cy.get('.weather-searchbox >>>> .button').click();
+		cy.get('.weather-section__body >>> .ajax-loader').should('be.visible');
+	});
+
+	it('Searching a community', function() {
+		cy.get('.weather-searchbox>.form>>>.input--block').should('be.visible').type('Lembeek');
+		cy.get('.weather-searchbox >>>> .button').click();
+		cy.get('.weather-searchbox__results > :nth-child(1) > li > a').click();
+
+		cy.get('.weather-title').should('be.visible').then(($weatherCity) => {
+			expect($weatherCity.text()).to.contain('Lembeek');
+		});
 	});
 
 	it('Searching a city', function() {
 		let selectRanTable = Math.floor(Math.random() * 9 + 1);
-		let selectRanRow = Math.floor(Math.random() * 4 + 1);
+		let selectRanRow = Math.floor(Math.random() * 5 + 1);
 		let selectCity = ':nth-child(' + selectRanTable + ') >.table>tbody>:nth-child(' + selectRanRow + ') >.key>a';
 		//selecting a random city in the tabled list
 
