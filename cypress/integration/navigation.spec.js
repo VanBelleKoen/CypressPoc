@@ -18,7 +18,7 @@ describe('basic Navigation on the site', function() {
 		let term;
 		let searchTerm;
 		cy.get('.nav-search').should('be.visible').click();
-		cy.get('.col--primary--wide > .ankeiler > a > .ankeiler__header > .ankeiler__title').then(($div) => {
+		cy.get('.col--primary--wide >>>> .ankeiler__title').then(($div) => {
 			term = $div.text();
 			searchTerm = term.match(/[-A-Za-z]*/)[0];
 
@@ -33,9 +33,7 @@ describe('basic Navigation on the site', function() {
 		cy
 			.get('.ubersection-nieuws >> .nav__caret')
 			.invoke('show')
-			.get(
-				'.ubersection-nieuws > .subsection-menu > .subsection-menu__list > .item-1 > .subsection-menu__list__item__link'
-			)
+			.get('.ubersection-nieuws >>> .item-1 > .subsection-menu__list__item__link')
 			.click({ force: true });
 
 		cy.get('.section-title').should('be.visible');

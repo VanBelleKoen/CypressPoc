@@ -21,7 +21,7 @@ describe('The weather page', function() {
 	});
 
 	it('Searching a community', function() {
-		cy.get('.weather-searchbox>.form>>>.input--block').should('be.visible').type('Lembeek');
+		cy.get('.weather-searchbox>.form >>>.input--block').should('be.visible').type('Lembeek');
 		cy.get('.weather-searchbox >>>> .button').click();
 		cy.get('.weather-searchbox__results > :nth-child(1) > li > a').click();
 
@@ -33,7 +33,7 @@ describe('The weather page', function() {
 	it('Searching a city', function() {
 		let selectRanTable = Math.floor(Math.random() * 9 + 1);
 		let selectRanRow = Math.floor(Math.random() * 5 + 1);
-		let selectCity = ':nth-child(' + selectRanTable + ') >.table>tbody>:nth-child(' + selectRanRow + ') >.key>a';
+		let selectCity = ':nth-child(' + selectRanTable + ') > .table >> :nth-child(' + selectRanRow + ') >> a';
 		//selecting a random city in the tabled list
 
 		cy.get(selectCity).last().should('be.visible').then(($city) => {
@@ -42,6 +42,7 @@ describe('The weather page', function() {
 			cy.get('.weather-title').should('be.visible').then(($weatherCity) => {
 				expect($weatherCity.text()).to.contain($city.text());
 			});
+
 			cy.get('.weather-today__measuredTemp').should('be.visible');
 		});
 	});
